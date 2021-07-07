@@ -6,12 +6,18 @@ import {
 } from 'react-router-dom'
 import Home from './Pages/Home'
 
-function Routes () {
+interface IProps {
+  Layout: React.ComponentType<any>
+}
+
+const Routes: React.FC<IProps> = ({ Layout }:IProps) => {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={Home} />
-      </Switch>
+      <Layout>
+        <Switch>
+          <Route exact path="/" component={Home} />
+        </Switch>
+      </Layout>
     </BrowserRouter>
   )
 }

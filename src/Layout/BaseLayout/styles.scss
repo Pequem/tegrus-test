@@ -1,0 +1,56 @@
+.ant-layout {
+    background-color: initial !important;
+
+    .ant-layout-header {
+        height: 90px !important;
+        padding: 15px !important;
+        background-color: #fff !important;
+        box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
+        display: flex;
+        align-items: center;
+    
+        .ant-menu-item-active::after {
+            border: none !important;
+        }
+
+        .ant-menu-submenu {
+            border: none !important;
+            transition: none !important;
+        }
+    
+        ul {
+            border: none !important;
+
+            a {
+                font-size: 16px;
+            }
+        }
+    
+        .layout-logo {
+            img {
+                height: 60px;
+            }
+        }
+    }
+
+    // alinha a imagem no canto direito inferior da pagina
+    .layout-background-img {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        z-index: -1;
+
+        img{
+            margin-right: -34px;
+            margin-bottom: -55px;
+            width: 860px;
+            height: auto;
+            opacity: 0.3;
+        }
+    }
+
+    .layout-content {
+        position: relative;
+    }
+}
