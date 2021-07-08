@@ -8,7 +8,7 @@ import IBreakingBadApi from '../../Interfaces/IBreakingBadApi'
 import ICharacter from '../../Interfaces/ICharacter'
 import Loading from '../../Components/LoadingWrapper'
 import { useParams } from 'react-router'
-import Card from '../../Components/Card'
+import CardDetail from '../../Components/CardDetail'
 
 interface IParams {
   id: string
@@ -37,14 +37,21 @@ const Home: React.FC = () => {
   }, [])
 
   return (
+    <>
     <section>
       <div className='head'>
         <Typography.Title level={1}>{character?.nickname}</Typography.Title>
       </div>
       <Loading isLoading={character === null}>
-        {character && <Card character={character} full={true} />}
+        {character && <CardDetail character={character} />}
       </Loading>
     </section>
+    <section>
+      <div className='head'>
+        <Typography.Title level={1}>Apparitions</Typography.Title>
+      </div>
+    </section>
+    </>
   )
 }
 

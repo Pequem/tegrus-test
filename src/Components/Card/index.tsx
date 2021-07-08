@@ -6,37 +6,11 @@ import {
 import ICharacter from '../../Interfaces/ICharacter'
 import './styles.scss'
 
-interface IPropsOccupation {
-  occupation: string[],
-  full: Boolean
-}
-
 interface IProps {
-  character: ICharacter,
-  full: boolean
+  character: ICharacter
 }
 
-const Occupation = ({ occupation, full }: IPropsOccupation) => {
-  if (full) {
-    return (
-      <div className='info-group'>
-        <Typography.Title level={4}>Occupation</Typography.Title>
-        {occupation.map((o, index) => (
-          <Typography.Text key={index}>{ o }</Typography.Text>
-        ))}
-      </div>
-    )
-  } else {
-    return (
-      <div className='info-group'>
-        <Typography.Title level={4}>Occupation</Typography.Title>
-        <Typography.Text>{ occupation[0] }</Typography.Text>
-      </div>
-    )
-  }
-}
-
-const Card: React.FC<IProps> = ({ character, full }: IProps) => {
+const Card: React.FC<IProps> = ({ character }: IProps) => {
   return (
     <AntCard className='card-character'>
       <div className='image'>
@@ -49,7 +23,10 @@ const Card: React.FC<IProps> = ({ character, full }: IProps) => {
             <Typography.Title level={4}>Name</Typography.Title>
             <Typography.Text>{ character.name }</Typography.Text>
           </div>
-          <Occupation occupation={character.occupation} full={full} />
+          <div className='info-group'>
+            <Typography.Title level={4}>Occupation</Typography.Title>
+            <Typography.Text>{ character.occupation[0] }</Typography.Text>
+          </div>
           <div className='info-group'>
             <Typography.Title level={4}>Age</Typography.Title>
             <Typography.Text>{ isNaN(character.age) ? 'Unknown' : character.age }</Typography.Text>

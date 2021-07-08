@@ -22,7 +22,7 @@ class BreakingBadApi implements IBreakingBadApi {
       throw new Error('Cannot call the API')
     }
   }
-
+  
   // Recupera um personagen da API
   async fetchCharacter (id: number): Promise<any> {
     try {
@@ -77,6 +77,23 @@ class BreakingBadApi implements IBreakingBadApi {
   async getAllCharacters (): Promise<ICharacter[]> {
     return this.parseCharacterObjects(await this.fetchCharacters())
   }
+
+  async fetchEpisodes (): Promise<any[]> {
+    try {
+      const result = await axios.get('https://breakingbadapi.com/api/episodes')
+      if (result.data &&
+        Array.isArray(result.data) &&
+        result.data.length > 0) {
+        return result.data
+      } else {
+        throw new Error('Cannot call the API')
+      }
+    } catch (e) {
+      throw new Error('Cannot call the API')
+    }
+  }
+
+  async getApparences(charId: number)
 }
 
 export default BreakingBadApi

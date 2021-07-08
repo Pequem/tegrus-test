@@ -91,7 +91,7 @@ const Home: React.FC = () => {
         <Space size={50} wrap className='content-cards'>
           {filteredCharacters.map(character =>
             <Link key={character.id} to={`/detail/${character.id}`}>
-              <Card character={character} full={false} />
+              <Card character={character} />
             </Link>
           )}
         </Space>
