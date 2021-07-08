@@ -8,6 +8,7 @@ import IBreakingBadApi from '../../Interfaces/IBreakingBadApi'
 import ICharacter from '../../Interfaces/ICharacter'
 import Loading from '../../Components/LoadingWrapper'
 import { useParams } from 'react-router'
+import Card from '../../Components/Card'
 
 interface IParams {
   id: string
@@ -41,7 +42,7 @@ const Home: React.FC = () => {
         <Typography.Title level={1}>{character?.nickname}</Typography.Title>
       </div>
       <Loading isLoading={character === null}>
-
+        {character && <Card character={character} full={true} />}
       </Loading>
     </section>
   )
