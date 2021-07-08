@@ -1,14 +1,13 @@
 import { Container } from 'inversify'
 import IBreakingBadApi from './Interfaces/IBreakingBadApi'
+import ICharacter from './Interfaces/ICharacter'
+import Character from './Models/Character'
 import BreakingBadApi from './Services/BreakingBadApi'
 
-const containerDefinition = () => {
-  const container = new Container()
+const container = new Container()
 
-  // Conecta o simbolo 'IBreakingBadApi' a implementação dele
-  container.bind<IBreakingBadApi>('IBreakingBadApi').to(BreakingBadApi)
+// Conecta o simbolo 'IBreakingBadApi' a implementação dele
+container.bind<IBreakingBadApi>('IBreakingBadApi').to(BreakingBadApi)
+container.bind<ICharacter>('ICharacter').to(Character)
 
-  return container
-}
-
-export default containerDefinition
+export default container

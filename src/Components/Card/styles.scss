@@ -1,6 +1,8 @@
 .card-character {
     $card-height: 255px;
     $card-width: 416px;
+    $image-width: 178px;
+    box-shadow: 4px 4px 4px rgba(174, 174, 174, 0.25);
 
     height: $card-height;
     width: $card-width;
@@ -13,11 +15,51 @@
     .ant-card-body {
         padding: 0;
         margin: 0;
+        display: flex;
+        flex-direction: row;
+
+        h3 {
+            margin: 0;
+            font-weight: normal;
+        }
+
+        .infos {
+            padding: 8px;
+            width: calc(#{$card-width} - #{$image-width});
+            
+            .detail {
+                padding-top: 8px;
+                padding-bottom: 8px;
+            }
+
+            .info-group {
+                width: 100%;
+
+                h4 {
+                    font-size: 11px;
+                    font-weight: bolder !important;
+                    margin: 0;
+                }
+                span {
+                    font-size: 18px;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    width: 100%;
+                    display: inline-block;
+                }
+            }
+        }
     }
 
-    img {
+    .image {
         height: $card-height;
-        width: 178px;
-        object-fit: cover;
+        width: $image-width;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
     }
 }

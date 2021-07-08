@@ -2,6 +2,7 @@ interface ICharacter {
     id: number,
     name: string,
     birthdate: Date,
+    age: number,
     occupation: string[],
     img: string,
     status: string,

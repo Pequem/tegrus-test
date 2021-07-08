@@ -1,3 +1,12 @@
 .content-cards {
     justify-content: center;
 }
+
+section {
+    .head {
+        .ant-input-search {
+            margin-left: auto;
+            width: 246px;
+        }   
+    }
+}

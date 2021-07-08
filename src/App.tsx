@@ -8,7 +8,7 @@ import './App.scss'
 
 function App () {
   return (
-    <Provider container={container}>
+    <Provider container={() => (container)}>
       <Routes Layout={BaseLayout} />
     </Provider>
   )
