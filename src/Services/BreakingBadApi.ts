@@ -79,6 +79,7 @@ class BreakingBadApi implements IBreakingBadApi {
     return this.parseCharacterObjects(await this.fetchCharacters())
   }
 
+  // recupera os episodeos da api
   async fetchEpisodes (): Promise<any[]> {
     try {
       const result = await axios.get('https://breakingbadapi.com/api/episodes?series=Breaking+Bad')
@@ -94,6 +95,7 @@ class BreakingBadApi implements IBreakingBadApi {
     }
   }
 
+  // converte o retorno da api em objetos do tipo IEpisode
   parserEpisodeObjects (objects: any[]): IEpisode[] {
     let episodes: IEpisode[] = []
 
@@ -113,6 +115,7 @@ class BreakingBadApi implements IBreakingBadApi {
     return episodes
   }
 
+  // Retorna todos os episodios
   async getAllEpisodes (): Promise<IEpisode[]> {
     return this.parserEpisodeObjects(await this.fetchEpisodes())
   }

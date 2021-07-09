@@ -10,6 +10,7 @@ interface IProps {
   character: ICharacter
 }
 
+// Cards da pagina inicial
 const Card: React.FC<IProps> = ({ character }: IProps) => {
   return (
     <AntCard className='card-character'>

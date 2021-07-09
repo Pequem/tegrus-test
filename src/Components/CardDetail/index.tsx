@@ -10,6 +10,7 @@ interface IProps {
   character: ICharacter
 }
 
+// Seção de detalhes da pagina detail
 const CardDetail: React.FC<IProps> = ({ character }: IProps) => {
   return (
     <div className='card-detail'>

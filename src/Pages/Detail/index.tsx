@@ -22,6 +22,7 @@ const Home: React.FC = () => {
   const [episodes, setEpisodes] = useState<IEpisode[]>([])
   const params = useParams<IParams>()
 
+  // carrega os dados iniciais
   const loadingData = async () => {
     try {
       setCharacter(await breakingBadApi.getCharacter(parseInt(params.id)))
@@ -33,8 +34,6 @@ const Home: React.FC = () => {
       })
     }
   }
-
-  console.log(character)
 
   useEffect(() => {
     loadingData()

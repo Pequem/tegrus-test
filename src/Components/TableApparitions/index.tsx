@@ -10,6 +10,7 @@ interface IProps {
 }
 
 const TableApparitions = ({ episodes, character }: IProps) => {
+  // retorna a quantidade maxima de ep em uma temporada
   const getSizeOfBiggestSeason = (): number => {
     return episodes.reduce<number>(
       (current, episode) => (current > episode.episode ? current : episode.episode),
@@ -17,6 +18,7 @@ const TableApparitions = ({ episodes, character }: IProps) => {
     )
   }
 
+  // retorna a quantidade de temporadas
   const getSeasonCount = (): number => {
     return episodes.reduce<number>(
       (current, episode) => (current > episode.season ? current : episode.season),
@@ -24,18 +26,17 @@ const TableApparitions = ({ episodes, character }: IProps) => {
     )
   }
 
+  // retorna eps por temporada
   const getEpisodesBySeason = (season: number): (IEpisode|null)[] => {
     return episodes.filter(epidose => epidose.season === season).sort((a, b) => a.episode - b.episode)
   }
 
+  // verifica se o personagem esta presente
   const checkApparition = (episode: IEpisode) => {
     return episode.charactersNames.filter(charName => {
       return character.name.localeCompare(charName) === 0
     }).length > 0
   }
-
-  console.log(getSizeOfBiggestSeason())
-  console.log(episodes)
 
   return (
     <div className='align-center'>
