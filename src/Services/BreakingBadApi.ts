@@ -73,6 +73,10 @@ class BreakingBadApi implements IBreakingBadApi {
     return characters
   }
 
+  removeBetterCallSoulCharacters (characters: ICharacter[]): ICharacter[] {
+    return characters.filter(character => character.appearance.length > 0)
+  }
+
   // Retorna um personagen
   async getCharacter (id: number): Promise<ICharacter> {
     return this.parseCharacterObject((await this.fetchCharacter(id))[0])
@@ -80,7 +84,7 @@ class BreakingBadApi implements IBreakingBadApi {
 
   // Retorna todos os personagens
   async getAllCharacters (): Promise<ICharacter[]> {
-    return this.parseCharacterObjects(await this.fetchCharacters())
+    return this.removeBetterCallSoulCharacters(this.parseCharacterObjects(await this.fetchCharacters()))
   }
 
   // recupera os episodeos da api

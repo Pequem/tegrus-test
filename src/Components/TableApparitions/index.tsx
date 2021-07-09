@@ -34,7 +34,7 @@ const TableApparitions = ({ episodes, character }: IProps) => {
   // verifica se o personagem esta presente
   const checkApparition = (episode: IEpisode) => {
     return episode.charactersNames.filter(charName => {
-      return character.name.localeCompare(charName) === 0
+      return character.name.localeCompare(charName) === 0 || charName.toLocaleLowerCase().indexOf(character.nickname.toLocaleLowerCase()) === 0
     }).length > 0
   }
 
