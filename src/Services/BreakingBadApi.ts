@@ -38,9 +38,13 @@ class BreakingBadApi implements IBreakingBadApi {
     }
   }
 
-  parseDate (date: string): Date {
-    const tokens: string[] = date.split('-')
-    return new Date(`${tokens[2]}-${tokens[0]}-${tokens[1]}`)
+  parseDate (dateString: string): Date {
+    const tokens: string[] = dateString.split('-')
+    const date = new Date()
+    date.setDate(parseInt(tokens[1]))
+    date.setMonth(parseInt(tokens[0]) - 1)
+    date.setFullYear(parseInt(tokens[2]))
+    return date
   }
 
   // Converte o resposta da API em objeto do tipo ICharacter

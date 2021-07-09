@@ -18,7 +18,9 @@ const Card: React.FC<IProps> = ({ character }: IProps) => {
         <img src={character.img} />
       </div>
       <div className='infos'>
-        <Typography.Title level={3}>{ character.nickname }</Typography.Title>
+        <div className='title'>
+          <Typography.Title level={3}>{ character.nickname }</Typography.Title>
+        </div>
         <div className='detail'>
           <div className='info-group'>
             <Typography.Title level={4}>Name</Typography.Title>

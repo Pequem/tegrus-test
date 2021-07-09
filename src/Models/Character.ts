@@ -19,6 +19,14 @@ class Character implements ICharacter {
     const ageDate = new Date(ageDifMs) // miliseconds from epoch
     return Math.abs(ageDate.getUTCFullYear() - 1970)
   }
+
+  getBirthdateString (): string {
+    if (!isNaN(this.birthdate.getTime())) {
+      return `${this.birthdate.getMonth() + 1}/${this.birthdate.getDate()}/${this.birthdate.getFullYear()}`
+    } else {
+      return 'Unknown'
+    }
+  }
 }
 
 export default Character

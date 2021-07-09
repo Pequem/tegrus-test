@@ -8,7 +8,8 @@ interface ICharacter {
   status: string,
   appearance: number[],
   nickname: string,
-  portrayed: string
+  portrayed: string,
+  getBirthdateString(): string
 }
 
 export default ICharacter

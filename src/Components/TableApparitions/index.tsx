@@ -56,14 +56,14 @@ const TableApparitions = ({ episodes, character }: IProps) => {
             {
               Array(getSeasonCount()).fill(0).map((_, indexSeason) => (
                 <tr key={indexSeason}>
-                  <td>Season {indexSeason + 1}</td>
+                  <td key={0}>Season {indexSeason + 1}</td>
                   {
                     Array(getSizeOfBiggestSeason()).fill(0).map((_, index) => (
                       getEpisodesBySeason(indexSeason + 1)[index]
                         ? checkApparition(getEpisodesBySeason(indexSeason + 1)[index]!)
-                          ? <td className='yes'>Yes</td>
-                          : <td className='no'>No</td>
-                        : <td className='no-ep'>-</td>
+                          ? <td key={index + 1} className='yes'>Yes</td>
+                          : <td key={index + 1} className='no'>No</td>
+                        : <td key={index + 1} className='no-ep'>-</td>
                     ))
                   }
                 </tr>

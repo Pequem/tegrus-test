@@ -27,6 +27,14 @@
             padding: 8px;
             width: calc(#{$card-width} - #{$image-width});
             
+            h3 {
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                width: 100%;
+                display: inline-block;
+            }
+
             .detail {
                 padding-top: 8px;
                 padding-bottom: 8px;

@@ -35,7 +35,7 @@ const CardDetail: React.FC<IProps> = ({ character }: IProps) => {
             <div className='info-group'>
               <Typography.Title level={4}>Birthdate</Typography.Title>
               <Typography.Text>
-                {isNaN(character.age) ? 'Unknown' : character.age}
+                {character.getBirthdateString()} ({isNaN(character.age) ? 'Unknown' : character.age + ' old'})
               </Typography.Text>
             </div>
             <div className='info-group'>
