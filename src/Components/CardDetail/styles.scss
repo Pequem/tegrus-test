@@ -22,10 +22,10 @@
     .card-detail-character {
         
         box-shadow: 4px 4px 4px rgba(174, 174, 174, 0.25);
-    
         height: $card-height;
         width: $card-width;
         user-select: none;
+        flex: 1;
 
         .ant-card-body {
             padding: 0;
@@ -67,6 +67,23 @@
                     }
                 }
             }
+        }
+    }
+
+    @media (max-width: 1164px) {
+        width: auto;        
+    }
+
+    @media (max-width: 780px) {
+        display: block;
+
+        .image {
+            margin: auto;
+            margin-bottom: 16px;
+        }
+
+        .card-detail-character {
+            width: 100%;
         }
     }
 }

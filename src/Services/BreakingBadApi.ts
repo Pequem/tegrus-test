@@ -4,6 +4,7 @@ import axios from 'axios'
 import { injectable } from 'inversify'
 import container from '../DIContainer'
 import 'reflect-metadata'
+import IEpisode from '../Interfaces/IEpisode'
 
 @injectable()
 class BreakingBadApi implements IBreakingBadApi {
@@ -22,7 +23,7 @@ class BreakingBadApi implements IBreakingBadApi {
       throw new Error('Cannot call the API')
     }
   }
-  
+
   // Recupera um personagen da API
   async fetchCharacter (id: number): Promise<any> {
     try {
@@ -80,7 +81,7 @@ class BreakingBadApi implements IBreakingBadApi {
 
   async fetchEpisodes (): Promise<any[]> {
     try {
-      const result = await axios.get('https://breakingbadapi.com/api/episodes')
+      const result = await axios.get('https://breakingbadapi.com/api/episodes?series=Breaking+Bad')
       if (result.data &&
         Array.isArray(result.data) &&
         result.data.length > 0) {
@@ -93,7 +94,28 @@ class BreakingBadApi implements IBreakingBadApi {
     }
   }
 
-  async getApparences(charId: number)
+  parserEpisodeObjects (objects: any[]): IEpisode[] {
+    let episodes: IEpisode[] = []
+
+    episodes = objects.map(object => {
+      const episode: IEpisode = container.get<IEpisode>('IEpisode')
+
+      episode.airDate = new Date(this.parseDate(object.air_date))
+      episode.charactersNames = object.characters
+      episode.episode = parseInt(object.episode)
+      episode.id = object.episode_id
+      episode.season = parseInt(object.season)
+      episode.title = object.title
+
+      return episode
+    })
+
+    return episodes
+  }
+
+  async getAllEpisodes (): Promise<IEpisode[]> {
+    return this.parserEpisodeObjects(await this.fetchEpisodes())
+  }
 }
 
 export default BreakingBadApi
